@@ -1,27 +1,5 @@
-# Ansible role Don't Starve Together dedicated server
+---
 
-Setup and install one or more Don't Starve Together dedicated server.
-> caves included
-
-## Usage
-
-Setup a classical survival Don't Starve Together server:
-```
-- hosts: myhostname
-  roles:
-    - dontstarvetogether-server
-```
-
-Setup a classical **overworld server** plus a **caves server**:
-```
-- hosts: myhostname
-  roles:
-    - { role: dontstarvetogether-server, dst_shard_enable: true, dst_shard_is_master: true }
-    - { role: dontstarvetogether-server, dst_shard_enable: true, dst_world_preset: DST_CAVES, dst_server_port: 11000, dst_shard_name: caves, master_ip: 127.0.0.1 }
-```
-
-## Defaults variables
-```
 # steamcmd configuration
 steamcmd_user: steam
 steamcmd_user_home: /home/{{ steamcmd_user }}/
@@ -70,8 +48,3 @@ dst_shard_name: overworld # define the shard name
 dst_shard_cluster_key: change_this_if_you_set_bind_ip
 dst_shard_master_ip: ~ # set the master server IP
 dst_shard_id: "{{ dst_shard_name | to_uuid }}"
-```
-
-## Links
-
-<http://dont-starve-game.wikia.com/wiki/Guides/Don’t_Starve_Together_Dedicated_Servers>

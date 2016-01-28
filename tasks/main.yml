@@ -1,0 +1,11 @@
+---
+
+- include: requirements.yml
+- include: packages.yml
+- include: app.yml
+  become: yes
+  become_user: '{{ steamcmd_user }}'
+- include: server.yml
+  become: yes
+  become_user: '{{ steamcmd_user }}'
+

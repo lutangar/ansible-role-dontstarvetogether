@@ -1,0 +1,35 @@
+---
+
+- name: Ensures that server directory `{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/` exists.
+  file:
+    path: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/'
+    state: directory
+
+- name: Creates settings file.
+  template:
+    src: server/settings.ini.j2
+    dest: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/settings.ini'
+
+- name: Creates server token file.
+  template:
+    src: server/server_token.txt.j2
+    dest: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/server_token.txt'
+
+- name: Creates world generation file.
+  template:
+    src: server/worldgenoverride.lua.j2
+    dest: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/worldgenoverride.lua'
+
+- name: Copy server init script into place.
+  template:
+    src: server/bin/start.j2
+    dest: /etc/init.d/dst-{{ dst_shard_name }}
+    owner: steam
+    group: steam
+    mode: 0755
+
+- name: Ensure the server is enabled and will start on boot.
+  service:
+    name: dst-{{ dst_shard_name }}
+    state: started
+    enabled: yes

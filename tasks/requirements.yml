@@ -1,0 +1,14 @@
+---
+
+- stat: path={{ steamcmd_directory }}steamcmd.sh
+  register: steamcmd
+
+- name: Check if steamcmd exists.
+  fail:
+    msg: Unable to find {{ steamcmd_directory }}steamcmd.sh, you may uses lutangar/ansible_role_steamcmd
+  when: not steamcmd.stat.exists
+
+- name: Check if is the server token is set.
+  fail:
+    msg: You must set the dst_server_token, you can generate one by entering `TheNet:GenerateServerToken()` in the Don't Starve Togheter console.
+  when: not dst_server_token

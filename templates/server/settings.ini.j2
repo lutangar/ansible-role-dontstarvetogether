@@ -1,0 +1,40 @@
+[network]
+default_server_name = {{ dst_server_name }}
+default_server_description = {{ dst_server_description }}
+server_port = {{ dst_server_port }}
+server_password = {{ dst_server_password }}
+{% if dst_server_save_slot is defined %}
+server_save_slot = {{ dst_server_save_slot }}
+{% endif %}
+server_intention = {{ dst_server_intention }}
+
+max_players = {{ dst_max_players }}
+pvp = {{ dst_pvp | lower }}
+game_mode = {{ dst_game_mode }}
+
+enable_autosaver = {{ dst_enable_autosaver | lower }}
+enable_snapshots = {{ dst_enable_snapshots | lower }}
+tick_rate = {{ dst_tick_rate }}
+connection_timeout = {{ dst_connection_timeout }}
+enable_vote_kick = {{ dst_enable_vote_kick | lower }}
+pause_when_empty = {{ dst_pause_when_empty | lower }}
+offline_server = {{ dst_offline_server | lower }}
+
+[steam]
+disablecloud = {{ dst_disable_cloud | lower }}
+
+[misc]
+console_enabled = {{ dst_console_enabled | lower }}
+autocompiler_enabled = {{ dst_autocompiler_enabled | lower }}
+
+[shard]
+shard_enable = {{ dst_shard_enable | lower }}
+is_master = {{ dst_shard_is_master | lower }}
+shard_name = {{ dst_shard_name }}
+cluster_key = {{ dst_shard_cluster_key }}
+{% if dst_server_save_slot %}
+master_ip = {{ dst_shard_master_ip }}
+{% endif %}
+{% if dst_shard_id %}
+shard_id = {{ dst_shard_id }}
+{% endif %}
