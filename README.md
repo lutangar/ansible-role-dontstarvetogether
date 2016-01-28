@@ -8,6 +8,8 @@ Setup and install one or more Don't Starve Together dedicated server.
 Setup a classical survival Don't Starve Together server:
 ```
 - hosts: myhostname
+  vars:
+    dst_server_token: myUniqueServerToken
   roles:
     - dontstarvetogether-server
 ```
@@ -15,6 +17,8 @@ Setup a classical survival Don't Starve Together server:
 Setup a classical **overworld server** plus a **caves server**:
 ```
 - hosts: myhostname
+  vars:
+    dst_server_token: myUniqueServerToken
   roles:
     - { role: dontstarvetogether-server, dst_shard_enable: true, dst_shard_is_master: true }
     - { role: dontstarvetogether-server, dst_shard_enable: true, dst_world_preset: DST_CAVES, dst_server_port: 11000, dst_shard_name: caves, master_ip: 127.0.0.1 }
