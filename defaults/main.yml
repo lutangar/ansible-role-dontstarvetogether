@@ -17,6 +17,7 @@ dst_server_token: ~ # proves ownership of Don’t Starve Together
 dst_world_preset: SURVIVAL_TOGETHER
 
 # network
+dst_server_as_a_service: true
 dst_server_name: "[Host]'s World"
 dst_server_description: Once uppon a time in a quite hostile world.
 dst_server_port: 10999

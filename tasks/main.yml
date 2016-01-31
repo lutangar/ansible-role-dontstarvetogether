@@ -8,4 +8,5 @@
 - include: server.yml
   become: yes
   become_user: '{{ steamcmd_user }}'
-
+- include: service.yml
+  when: dst_server_as_a_service
