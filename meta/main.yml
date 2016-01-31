@@ -22,5 +22,6 @@ galaxy_info:
     - steam
     - dontstarvetogether
     - caves
+    - dedicatedserver
 
 dependencies: []
