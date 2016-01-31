@@ -82,7 +82,7 @@ Setup a classical survival Don't Starve Together server:
     - lutangar.dontstarvetogether
 ```
 
-Setup a classical **overworld server** plus a **caves server**:
+Setup a classical **overworld server** plus a **caves server**, and open the
 ```
 - hosts: myhostname
   vars:
@@ -93,6 +93,14 @@ Setup a classical **overworld server** plus a **caves server**:
 ```
 
 > Remember there's only one master server, and other servers must set the master's IP and a different port number.
+
+This setup would creates 2 system services named after the shard name, allowing to `stop`, `start` and `restart` servers individually:
+```
+service dstoverworld restart
+service dstcaves restart
+```
+
+> Don't forget to open the host ports to access the servers from the outside.
 
 License
 -------
