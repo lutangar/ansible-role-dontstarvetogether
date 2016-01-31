@@ -1,30 +1,24 @@
-# Ansible role Don't Starve Together dedicated server
+Ansible role Don't Starve Together dedicated server
+===================================================
 
 Setup and install one or more Don't Starve Together dedicated server.
-> caves included
+> caves included :mushroom:
 
-## Usage
+Requirements
+------------
 
-Setup a classical survival Don't Starve Together server:
-```
-- hosts: myhostname
-  vars:
-    dst_server_token: myUniqueServerToken
-  roles:
-    - dontstarvetogether-server
-```
+The Steam CMD client must be present on the targeted host.
+You may use this role in combination with this [role for Steam cmd](https://github.com/lutangar/ansible-role-steamcmd) to ease things up.
 
-Setup a classical **overworld server** plus a **caves server**:
+In any case you can simply point to your existing installation with the help of these variables:
 ```
-- hosts: myhostname
-  vars:
-    dst_server_token: myUniqueServerToken
-  roles:
-    - { role: dontstarvetogether-server, dst_shard_enable: true, dst_shard_is_master: true }
-    - { role: dontstarvetogether-server, dst_shard_enable: true, dst_world_preset: DST_CAVES, dst_server_port: 11000, dst_shard_name: caves, master_ip: 127.0.0.1 }
+steamcmd_user: steam
+steamcmd_user_home: /home/{{ steamcmd_user }}/
+steamcmd_directory: /home/{{ steamcmd_user }}/cmd/
 ```
 
-## Defaults variables
+Role Variables
+--------------
 ```
 # steamcmd configuration
 steamcmd_user: steam
@@ -76,6 +70,36 @@ dst_shard_master_ip: ~ # set the master server IP
 dst_shard_id: "{{ dst_shard_name | to_uuid }}"
 ```
 
-## Links
+Example Playbook
+----------------
+
+Setup a classical survival Don't Starve Together server:
+```
+- hosts: myhostname
+  vars:
+    dst_server_token: myUniqueServerToken
+  roles:
+    - lutangar.dontstarvetogether
+```
+
+Setup a classical **overworld server** plus a **caves server**:
+```
+- hosts: myhostname
+  vars:
+    dst_server_token: myUniqueServerToken
+  roles:
+    - { role: lutangar.dontstarvetogether, dst_shard_enable: true, dst_shard_is_master: true }
+    - { role: lutangar.dontstarvetogether, dst_shard_enable: true, dst_world_preset: DST_CAVES, dst_server_port: 11000, dst_shard_name: caves, master_ip: 127.0.0.1 }
+```
+
+> Remember there's only one master server, and other servers must set the master's IP and a different port number.
+
+License
+-------
+
+MIT
+
+Resources
+---------
 
 <http://dont-starve-game.wikia.com/wiki/Guides/Don’t_Starve_Together_Dedicated_Servers>

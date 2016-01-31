@@ -1,0 +1,26 @@
+galaxy_info:
+  author: lutangar
+  description: 
+
+  license: MIT
+  
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+    - vivid
+  - name: Debian
+    versions:
+    - jessie
+    - wheezy
+  
+  galaxy_tags:
+    - dontstarve
+    - steam
+    - dontstarvetogether
+    - caves
+
+dependencies: []
