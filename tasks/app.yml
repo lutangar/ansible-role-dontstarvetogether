@@ -14,6 +14,6 @@
 
 - name: Install or update app.
   command: '{{ steamcmd_directory }}steamcmd.sh +runscript {{ dst_install_dir }}bin/update'
-  async: 120
+  async: 180
   poll: 5
   register: app_update
