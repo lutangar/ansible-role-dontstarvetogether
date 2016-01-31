@@ -96,8 +96,8 @@ Setup a classical **overworld server** plus a **caves server**, and open the
 
 This setup would creates 2 system services named after the shard name, allowing to `stop`, `start` and `restart` servers individually:
 ```
-service dstoverworld restart
-service dstcaves restart
+service dst-overworld restart
+service dst-caves restart
 ```
 
 > Don't forget to open the host ports to access the servers from the outside.
