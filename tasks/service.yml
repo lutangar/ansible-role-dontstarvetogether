@@ -1,6 +1,6 @@
 ---
 
-- name: Copy server init script into place.
+- name: copy server init script into place
   template:
     src: server/bin/start.j2
     dest: /etc/init.d/dst-{{ dst_shard_name }}
@@ -8,7 +8,7 @@
     group: steam
     mode: 0755
 
-- name: Ensure the server is enabled and will start on boot.
+- name: ensure the server is enabled and will start on boot
   service:
     name: dst-{{ dst_shard_name }}
     state: started

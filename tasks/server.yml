@@ -1,21 +1,21 @@
 ---
 
-- name: Ensures that server directory `{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/` exists.
+- name: ensures that server directory `{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/` exists
   file:
     path: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/'
     state: directory
 
-- name: Creates settings file.
+- name: creates settings file
   template:
     src: server/settings.ini.j2
     dest: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/settings.ini'
 
-- name: Creates server token file.
+- name: creates server token file
   template:
     src: server/server_token.txt.j2
     dest: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/server_token.txt'
 
-- name: Creates world generation file.
+- name: creates world generation file.
   template:
     src: server/worldgenoverride.lua.j2
     dest: '{{ steamcmd_user_home }}.klei/{{ dst_shard_name }}/worldgenoverride.lua'

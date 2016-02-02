@@ -1,18 +1,18 @@
 ---
 
-- name: Ensures {{ dst_install_dir }}bin/ directory exists.
+- name: ensures {{ dst_install_dir }}bin/ directory exists
   file:
     path: '{{ dst_install_dir }}bin/'
     state: directory
     recurse: yes
 
-- name: Create update script.
+- name: create update script
   template:
     src: update.j2
     dest: '{{ dst_install_dir }}bin/update'
     mode: 0755
 
-- name: Install or update app.
+- name: install or update app
   command: '{{ steamcmd_directory }}steamcmd.sh +runscript {{ dst_install_dir }}bin/update'
   async: 180
   poll: 5

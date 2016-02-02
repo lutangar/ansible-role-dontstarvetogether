@@ -1,14 +1,14 @@
 ---
 
-- name: Add i386 architecture onto Debian family.
+- name: add i386 architecture onto Debian family
   command: dpkg --add-architecture i386
   when: ansible_os_family == 'Debian'
 
-- name: Update the apt package index.
+- name: update the apt package index
   apt: update_cache=yes
   when: ansible_pkg_mgr == 'apt'
 
-- name: Install the dependencies required to run a Don't Starve Together server.
+- name: install the dependencies required to run a Don't Starve Together server
   package: name={{ item }} state=present
   with_items:
     - lib32gcc1
