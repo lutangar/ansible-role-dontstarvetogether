@@ -83,7 +83,7 @@ Setup a classical survival Don't Starve Together server:
     - lutangar.dontstarvetogether
 ```
 
-Setup a classical **overworld server** plus a **caves server**, and open the
+Setup a classical **overworld server** plus a **caves server** for spelunking:
 ```
 - hosts: myhostname
   vars:
